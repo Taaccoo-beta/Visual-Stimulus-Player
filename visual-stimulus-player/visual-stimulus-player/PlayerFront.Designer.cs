@@ -52,6 +52,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(762, 308);
             this.Controls.Add(this.vlcControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PlayerFront";
             this.Text = "PlayerFront";
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).EndInit();

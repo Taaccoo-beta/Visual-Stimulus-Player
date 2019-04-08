@@ -38,6 +38,7 @@
             this.vlcControl1.BackColor = System.Drawing.Color.Black;
             this.vlcControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vlcControl1.Location = new System.Drawing.Point(0, 0);
+            this.vlcControl1.Margin = new System.Windows.Forms.Padding(0);
             this.vlcControl1.Name = "vlcControl1";
             this.vlcControl1.Size = new System.Drawing.Size(772, 323);
             this.vlcControl1.Spu = -1;
@@ -52,6 +53,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(772, 323);
             this.Controls.Add(this.vlcControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PlayerBack";
             this.Text = "PlayerBack";
             ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).EndInit();

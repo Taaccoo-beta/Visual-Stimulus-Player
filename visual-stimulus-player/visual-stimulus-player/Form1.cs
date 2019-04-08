@@ -75,6 +75,28 @@ namespace visual_stimulus_player
                 sR.Close();
 
 
+                sR = File.OpenText(Application.StartupPath + "\\Location.txt");
+                this.tbFrontX.Text = sR.ReadLine();
+                this.tbFrontY.Text = sR.ReadLine();
+                this.tbBackX.Text = sR.ReadLine();
+                this.tbBackY.Text = sR.ReadLine();
+
+                
+                sR.Close();
+
+
+
+                sR = File.OpenText(Application.StartupPath + "\\Size.txt");
+                this.tbSizeFX.Text = sR.ReadLine();
+                this.tbSizeFY.Text = sR.ReadLine();
+                this.tbSizeBX.Text = sR.ReadLine();
+                this.tbSizeBY.Text = sR.ReadLine();
+
+
+                sR.Close();
+
+
+
             }
             catch
             {
@@ -89,6 +111,12 @@ namespace visual_stimulus_player
             pf.Show();
             pb = new PlayerBack();
             pb.Show();
+
+            this.pf.Location = new Point(int.Parse(tbFrontX.Text), int.Parse(tbFrontY.Text));
+            this.pb.Location = new Point(int.Parse(tbBackX.Text), int.Parse(tbBackY.Text));
+
+            this.pf.Size = new System.Drawing.Size(int.Parse(tbSizeFX.Text), int.Parse(tbSizeFY.Text));
+            this.pb.Size = new System.Drawing.Size(int.Parse(tbSizeBX.Text), int.Parse(tbSizeBY.Text));
 
         }
 
@@ -209,6 +237,7 @@ namespace visual_stimulus_player
             }
         }
 
+        bool ifStop;
         private void button1_Click(object sender, EventArgs e)
         {
             int selectIndex = 0;
@@ -256,7 +285,7 @@ namespace visual_stimulus_player
             uint newStart;
             int count = 0;
             int subCount = 0;
-            bool ifStop = false;
+            ifStop = false;
 
            
 
@@ -281,7 +310,9 @@ namespace visual_stimulus_player
 
                             if (subCount == vedioTime * 10)
                             {
+                                
                                 this.pf.vlcControl1.SetMedia(new FileInfo(sequenceFilePath_1[selectIndex]));
+                                
                                 this.pf.vlcControl1.Play();
                                 this.pb.vlcControl1.SetMedia(new FileInfo(sequenceFilePath_1[selectIndex]));
                                 this.pb.vlcControl1.Play();
@@ -295,6 +326,7 @@ namespace visual_stimulus_player
                             subCount = 0;
                             this.pf.vlcControl1.Stop();
                             this.pb.vlcControl1.Stop();
+                            
                             //vedio stop
 
                         }
@@ -336,6 +368,66 @@ namespace visual_stimulus_player
                 ifS = true;
                 this.btnSwitchSAndM.Text = "S";
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ifStop = true;
+            
+            this.pf.vlcControl1.Stop();
+            this.pb.vlcControl1.Stop();
+        }
+
+        private void btnSetLocation_Click(object sender, EventArgs e)
+        {
+            //p = new Player();
+            //p.Size = new System.Drawing.Size(1038, 400);
+            //p.Show();
+            ////p.Location = new Point(10, 10);
+            //p.Location = new Point(3043, 439);
+
+            this.pf.Location = new Point(int.Parse(tbFrontX.Text), int.Parse(tbFrontY.Text));
+            this.pb.Location = new Point(int.Parse(tbBackX.Text), int.Parse(tbBackY.Text));
+
+
+
+
+            
+            FileStream fs1 = new FileStream(Application.StartupPath + "\\Location.txt", FileMode.Create, FileAccess.Write);//创建写入文件 
+            StreamWriter sw = new StreamWriter(fs1);
+
+                
+              
+            sw.WriteLine(int.Parse(tbFrontX.Text));
+            sw.WriteLine(int.Parse(tbFrontY.Text));
+            sw.WriteLine(int.Parse(tbBackX.Text));
+            sw.WriteLine(int.Parse(tbBackY.Text));
+
+
+            sw.Close();
+            fs1.Close();
+
+           
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.pf.Size = new System.Drawing.Size(int.Parse(tbSizeFX.Text), int.Parse(tbSizeFY.Text));
+            this.pb.Size = new System.Drawing.Size(int.Parse(tbSizeBX.Text), int.Parse(tbSizeBY.Text));
+
+            FileStream fs1 = new FileStream(Application.StartupPath + "\\Size.txt", FileMode.Create, FileAccess.Write);//创建写入文件 
+            StreamWriter sw = new StreamWriter(fs1);
+
+
+
+            sw.WriteLine(int.Parse(tbSizeFX.Text));
+            sw.WriteLine(int.Parse(tbSizeFY.Text));
+            sw.WriteLine(int.Parse(tbSizeBX.Text));
+            sw.WriteLine(int.Parse(tbSizeBY.Text));
+
+
+            sw.Close();
+            fs1.Close();
         }
     }
 }
