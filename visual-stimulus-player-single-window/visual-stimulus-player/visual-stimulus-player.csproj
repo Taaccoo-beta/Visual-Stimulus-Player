@@ -67,12 +67,6 @@
     <Compile Include="PlayerBack.Designer.cs">
       <DependentUpon>PlayerBack.cs</DependentUpon>
     </Compile>
-    <Compile Include="PlayerFront.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PlayerFront.Designer.cs">
-      <DependentUpon>PlayerFront.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -80,9 +74,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PlayerBack.resx">
       <DependentUpon>PlayerBack.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PlayerFront.resx">
-      <DependentUpon>PlayerFront.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
